@@ -1,4 +1,6 @@
-let base = 5
-for (let i=1; i<=10; i++) {
-    console.log(`${i} x ${base} = ${i * base}`)
-}
+const { crearArchivo } = require('./crearAcrchivo');
+const argv = require('yargs').argv;
+
+crearArchivo(3)
+    .then(n_archivo => console.log(`Archivo ${n_archivo} creado exitosamente`))
+    .catch(error => console.error(error));
