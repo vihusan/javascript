@@ -1,25 +1,49 @@
 const express = require('express');
-const morgan = require('morgan');
-const multer = require ( 'multer' );
+const hbs = require('hbs');
+
 const app = express();
 
+/* Express */
+app.use(express.static('public'));
 app.set('port', 38900);
 
-// Middleware Zone
+/* Handlebars */
+app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + '/views/partials');
 
-//Servir medios estaticos mediate un middleware
-app.use( express.static('public'));
-app.use( morgan() );
-app.use( multer() );
+
+app.get('/', (req, res) => {
+  res.render('home', {
+    titulo: 'Pagina hbs',
+    nombre: 'Victor Hugo',
+    anuncio: "La vida es un viaje"
+  });
+});
 
 app.get('/hiworld', (req, res) => {
-  res.send("Hola mundo");
+  res.sendFile(__dirname + '/public/helloWorld.html')
+});
+
+app.get('/generic', (req, res) => {
+  res.render('generic', {
+    titulo: 'Pagina hbs',
+    nombre: 'Victor Hugo',
+    anuncio: "La vida es un viaje"
+  });
+});
+
+app.get('/elements', (req, res) => {
+  res.render('elements', {
+    titulo: 'Pagina hbs',
+    nombre: 'Victor Hugo',
+    anuncio: "La vida es un viaje"
+  })
 });
 
 app.get('*', (req, res) => {
-  res.send("404 | Page not found !");
+  res.sendFile(__dirname + "/public/404.html");
 });
 
-app.listen( app.get('port') , () => {
+app.listen(app.get('port'), () => {
   console.log(`La app esta escuchando con por `, app.get('port'));
 });
