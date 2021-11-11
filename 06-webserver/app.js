@@ -13,13 +13,10 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 
 app.get('/', (req, res) => {
-  res.render('home', {
-    titulo: 'Pagina hbs',
-    nombre: 'Victor Hugo',
-    anuncio: "La vida es un viaje"
-  });
+  res.sendFile(__dirname + '/public/index.html');
 });
 
+/*
 app.get('/hiworld', (req, res) => {
   res.sendFile(__dirname + '/public/helloWorld.html')
 });
@@ -39,6 +36,7 @@ app.get('/elements', (req, res) => {
     anuncio: "La vida es un viaje"
   })
 });
+*/
 
 app.get('*', (req, res) => {
   res.sendFile(__dirname + "/public/404.html");
