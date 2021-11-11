@@ -1,17 +1,23 @@
 const express = require('express');
 const hbs = require('hbs');
+require('dotenv').config();
 
 const app = express();
 
+
 /* Express */
 app.use(express.static('public'));
-app.set('port', 38900);
+app.set('port', process.env.PORT);
 
 /* Handlebars */
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 
 
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
+/*
 app.get('/', (req, res) => {
   res.render('home', {
     titulo: 'Pagina hbs',
@@ -39,6 +45,7 @@ app.get('/elements', (req, res) => {
     anuncio: "La vida es un viaje"
   })
 });
+*/
 
 app.get('*', (req, res) => {
   res.sendFile(__dirname + "/public/404.html");
