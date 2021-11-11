@@ -1,0 +1,10 @@
+{
+    "workbench.colorCustomizations": {
+        "tab.activeBackground": "#7a8668",
+        "statusBarItem.remoteBackground": "#ff7b00",
+        "statusBarItem.remoteForeground": "#3f3e3e",
+        "activityBar.background": "#12276B",
+        "titleBar.activeBackground": "#1A3796",
+        "titleBar.activeForeground": "#F9FAFE"
+    }
+}
